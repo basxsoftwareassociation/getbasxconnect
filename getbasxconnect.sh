@@ -223,7 +223,7 @@ install_centos()
 
 install_debian()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
