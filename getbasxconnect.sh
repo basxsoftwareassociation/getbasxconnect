@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 32/33 and Debian 10 (Buster) and Ubuntu Focal (20.04).
+# This should work on Fedora 32/33 and CentOS 8 and Debian 10 (Buster) and Ubuntu Focal (20.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -205,6 +205,22 @@ install_fedora()
 	dnf -y install $packagesToInstall || exit -1
 }
 
+install_centos()
+{
+	yum -y install epel-release || exit -1
+	sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-PowerTools.repo || exit -1
+	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc hg git"
+	if [[ "$install_type" == "prod" ]]; then
+		packagesToInstall=$packagesToInstall" nginx"
+	fi
+	if [[ "$DBMSType" == "mysql" ]]; then
+		packagesToInstall=$packagesToInstall" mariadb-server mariadb-devel"
+	elif [[ "$DBMSType" == "sqlite" ]]; then
+		packagesToInstall=$packagesToInstall" sqlite"
+	fi
+	yum -y install $packagesToInstall || exit -1
+}
+
 install_debian()
 {
 	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git"
@@ -221,7 +237,7 @@ install_debian()
 
 install_ubuntu()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -313,7 +329,7 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "32" && "$VER" != "33" ]]; then
+			if [[ "$VER" != "32" && "$VER" != "33" && "$VER" != "8" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
