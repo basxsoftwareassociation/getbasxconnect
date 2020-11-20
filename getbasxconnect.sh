@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 32/33 and Debian 10 (Buster).
+# This should work on Fedora 32/33 and Debian 10 (Buster) and Ubuntu Focal (20.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -219,6 +219,21 @@ install_debian()
 	apt-get -y install $packagesToInstall || exit -1
 }
 
+install_ubuntu()
+{
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git"
+	if [[ "$install_type" == "prod" ]]; then
+		packagesToInstall=$packagesToInstall" nginx"
+	fi
+	if [[ "$DBMSType" == "mysql" ]]; then
+		packagesToInstall=$packagesToInstall" mariadb-server libmariadbclient-dev"
+	elif [[ "$DBMSType" == "sqlite" ]]; then
+		packagesToInstall=$packagesToInstall" sqlite"
+	fi
+	apt-get -y install $packagesToInstall || exit -1
+}
+
+
 install()
 {
 	trap 'echo -e "Aborted, error $? in command: $BASH_COMMAND"; trap ERR; exit 1' ERR
@@ -291,6 +306,7 @@ install()
 		if [[ "$OS" != "CentOS"
 			&& "$OS" != "Fedora"
 			&& "$OS" != "Debian"
+			&& "$OS" != "Ubuntu"
 			]]; then
 			echo "Aborted, Your distro is not supported: " $OS
 			return 6
@@ -303,7 +319,7 @@ install()
 			fi
 		fi
 		if [[ "$OS_FAMILY" == "Debian" ]]; then
-			if [[ "$VER" != "10" ]]; then
+			if [[ "$VER" != "10" && "$VER" != "20.04" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
