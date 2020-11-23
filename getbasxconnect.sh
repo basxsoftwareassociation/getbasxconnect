@@ -153,6 +153,9 @@ FINISH
 			sed -i "s/#SECURE_SSL_REDIRECT/SECURE_SSL_REDIRECT/g" $SRC_PATH/basxconnect/settings/production.py
 		fi
 	fi
+
+	# generate translation .po files from the .mo files
+	python manage.py compilemessages || exit -1
 }
 
 setup_dbms()
