@@ -122,7 +122,7 @@ setup_basxconnect()
 
 	if [ ! -d $SRC_PATH ]
 	then
-		hg clone https://hg.basx.dev/basxconnect $SRC_PATH
+		hg clone https://hg.basx.dev/basxconnect -b timotheusp $SRC_PATH
 		# git clone --depth 50 $GIT_URL -b $BRANCH $SRC_PATH
 		#if you want a full repository clone:
 		#git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
