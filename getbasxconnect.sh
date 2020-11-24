@@ -58,6 +58,10 @@ server {
     listen 8000;
     server_name localhost;
 
+    location /static/ {
+        alias $SRC_PATH/static/;
+    }
+
     location / {
         proxy_set_header Host \$http_host;
         proxy_set_header X-Real-IP \$remote_addr;
@@ -68,6 +72,10 @@ server {
     }
 }
 FINISH
+
+	# nginx is part of group django, and has read permission on /home/django
+	usermod -G nginx,django nginx
+	chmod g+rx $USER_HOME
 
 	systemctl start nginx
 	systemctl enable nginx
