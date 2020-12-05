@@ -146,6 +146,11 @@ setup_basxconnect()
 		pip install mysqlclient || exit -1
 	fi
 
+	if [[ "$install_type" == "devenv" ]]; then
+		# for code formatting
+		pip install black || exit -1
+	fi
+
 	if [[ "$install_type" == "prod" ]]; then
 		pip install gunicorn || exit -1
 		python manage.py compress --force || exit -1
