@@ -20,7 +20,7 @@
 #
 # available options:
 #     --git_url=<http git url>
-#            default is: --git_url=https://github.com/basxsoftwareassociation/basx.git
+#            default is: --git_url=https://github.com/basxsoftwareassociation/basxconnect_demo.git
 #     --branch=<branchname>
 #            default is: --branch=test
 #     --url=<outside url>
@@ -34,7 +34,7 @@
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
 
-export GIT_URL=https://github.com/basxsoftwareassociation/basx.git
+export GIT_URL=https://github.com/basxsoftwareassociation/basxconnect_demo.git
 export BRANCH=test
 export DBMSType=sqlite
 export URL=localhost
@@ -130,8 +130,7 @@ setup_basxconnect()
 
 	if [ ! -d $SRC_PATH ]
 	then
-		hg clone https://hg.basx.dev/basxconnect -b timotheusp $SRC_PATH
-		# git clone --depth 50 $GIT_URL -b $BRANCH $SRC_PATH
+		git clone --depth 50 $GIT_URL -b $BRANCH $SRC_PATH
 		#if you want a full repository clone:
 		#git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
 		#git fetch --unshallow
@@ -209,7 +208,7 @@ FINISH
 
 install_fedora()
 {
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc hg git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -225,7 +224,7 @@ install_centos()
 {
 	yum -y install epel-release || exit -1
 	sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-PowerTools.repo || exit -1
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc hg git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -239,7 +238,7 @@ install_centos()
 
 install_debian()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -253,7 +252,7 @@ install_debian()
 
 install_ubuntu()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc mercurial git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
