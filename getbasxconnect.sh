@@ -137,7 +137,7 @@ setup_basxconnect()
 	fi
 	cd $SRC_PATH
 
-	virtualenv -p /usr/bin/python3 .venv || exit -1
+	python3 -m venv .venv || exit -1
 	source .venv/bin/activate
 	pip install -r requirements.txt || exit -1
 
@@ -212,7 +212,7 @@ FINISH
 
 install_fedora()
 {
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -228,7 +228,7 @@ install_centos()
 {
 	yum -y install epel-release || exit -1
 	sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-PowerTools.repo || exit -1
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-virtualenv python3-devel gcc git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -242,7 +242,7 @@ install_centos()
 
 install_debian()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -256,7 +256,7 @@ install_debian()
 
 install_ubuntu()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-virtualenv python3-venv python3-dev virtualenv gcc git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
