@@ -148,10 +148,14 @@ setup_basxconnect()
 	if [[ "$install_type" == "devenv" ]]; then
 		# for code formatting
 		pip install black || exit -1
+
+		# current workaround to avoid path issues
+		python manage.py collectstatic || exit -1
 	fi
 
 	if [[ "$install_type" == "prod" ]]; then
 		pip install gunicorn || exit -1
+		python manage.py collectstatic || exit -1
 		python manage.py compress --force || exit -1
 		cat >> $SRC_PATH/basxconnect/settings/production.py  <<FINISH
 ALLOWED_HOSTS = ["$URL"]
