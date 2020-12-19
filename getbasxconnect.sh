@@ -148,6 +148,16 @@ setup_basxconnect()
 	if [[ "$install_type" == "devenv" ]]; then
 		# for code formatting
 		pip install black || exit -1
+
+		# for working with the latest packages
+		cd ..
+		git clone https://github.com/basxsoftwareassociation/htmlgenerator.git || exit -1
+		git clone https://github.com/basxsoftwareassociation/bread.git || exit -1
+		git clone https://github.com/basxsoftwareassociation/basxconnect.git || exit -1
+		cd -
+		pip install -e ../htmlgenerator
+		pip install -e ../bread
+		pip install -e ../basxconnect
 	fi
 
 	if [[ "$install_type" == "prod" ]]; then
