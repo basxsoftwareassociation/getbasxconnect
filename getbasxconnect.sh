@@ -123,7 +123,7 @@ FINISH
 setup_basxconnect()
 {
 	export USER_HOME=/home/django
-	export SRC_PATH=$USER_HOME/basxconnect
+	export SRC_PATH=$USER_HOME/basxconnect_demo
 
 	groupadd django
 	useradd --shell /bin/bash --home $USER_HOME --create-home -g django django
@@ -184,7 +184,7 @@ FINISH
 setup_dbms()
 {
 	if [[ "$DBMSType" == "mysql" ]]; then
-		cat >> $SRC_PATH/basxconnect/settings/local.py <<FINISH
+		cat >> $SRC_PATH/basxconnect_demo/settings/local.py <<FINISH
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
