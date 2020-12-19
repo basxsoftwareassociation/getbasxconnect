@@ -22,7 +22,7 @@
 #     --git_url=<http git url>
 #            default is: --git_url=https://github.com/basxsoftwareassociation/basxconnect_demo.git
 #     --branch=<branchname>
-#            default is: --branch=test
+#            default is: --branch=main
 #     --url=<outside url>
 #            default is: --url=localhost
 #     --behindsslproxy=<true|false>
@@ -35,7 +35,7 @@
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
 
 export GIT_URL=https://github.com/basxsoftwareassociation/basxconnect_demo.git
-export BRANCH=test
+export BRANCH=main
 export DBMSType=sqlite
 export URL=localhost
 export BEHIND_SSL_PROXY=true
