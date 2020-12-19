@@ -234,7 +234,7 @@ install_fedora()
 install_centos()
 {
 	yum -y install epel-release || exit -1
-	sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-PowerTools.repo || exit -1
+	sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo || exit -1
 	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
