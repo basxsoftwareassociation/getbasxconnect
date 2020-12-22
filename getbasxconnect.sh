@@ -139,6 +139,12 @@ setup_basxconnect()
 
 	python3 -m venv .venv || exit -1
 	source .venv/bin/activate
+
+	if [[ "$OS" == "Ubuntu" ]]; then
+		# to avoid error message: error: invalid command 'bdist_wheel'
+		pip install wheel || exit -1
+	fi
+
 	pip install -r requirements.txt || exit -1
 
 	if [[ "$DBMSType" == "mysql" ]]; then
