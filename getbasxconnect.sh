@@ -412,7 +412,9 @@ install()
 		chown -R django:django $USER_HOME
 
 		# display information to the developer
-		echo "Start developing in $SRC_PATH as user django, and use the following commands:"
+		echo "Start developing as user django, and use the following commands:"
+		echo "  su - django"
+		echo "    cd $SRC_PATH"
 		echo "    source .venv/bin/activate"
 		echo "    python manage.py runserver"
 		echo "login with user admin and password CHANGEME, and please change the password immediately."
