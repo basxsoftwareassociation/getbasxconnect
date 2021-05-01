@@ -170,7 +170,7 @@ setup_basxconnect()
 		pip install gunicorn || exit -1
 		python manage.py collectstatic || exit -1
 		python manage.py compress --force || exit -1
-		cat >> $SRC_PATH/basxconnect/settings/production.py  <<FINISH
+		cat >> $SRC_PATH/basxconnect-demo/settings/production.py  <<FINISH
 ALLOWED_HOSTS = ["$URL"]
 #DEBUG = True
 #if you are behind a reverse proxy, that does the https encryption:
@@ -179,7 +179,7 @@ ALLOWED_HOSTS = ["$URL"]
 FINISH
 
 		if [[ "$BEHIND_SSL_PROXY" == "true" ]]; then
-			sed -i "s/#SECURE_SSL_REDIRECT/SECURE_SSL_REDIRECT/g" $SRC_PATH/basxconnect/settings/production.py
+			sed -i "s/#SECURE_SSL_REDIRECT/SECURE_SSL_REDIRECT/g" $SRC_PATH/basxconnect-demo/settings/production.py
 		fi
 	fi
 
