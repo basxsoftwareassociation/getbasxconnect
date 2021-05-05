@@ -184,7 +184,7 @@ FINISH
 	fi
 
 	# generate translation .po files from the .mo files
-	python manage.py compilemessages || exit -1
+	LC_ALL=en_US.utf8 python manage.py compilemessages || exit -1
 }
 
 setup_dbms()
