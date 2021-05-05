@@ -190,7 +190,7 @@ FINISH
 setup_dbms()
 {
 	if [[ "$DBMSType" == "mysql" ]]; then
-		cat >> $SRC_PATH/basxconnect_demo/settings/local.py <<FINISH
+		cat >> $SRC_PATH/basxconnect-demo/settings/local.py <<FINISH
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
