@@ -167,9 +167,9 @@ setup_basxconnect()
 	fi
 
 	if [[ "$install_type" == "prod" ]]; then
-		pip install gunicorn django-compressor || exit -1
+		pip install gunicorn || exit -1
 		python manage.py collectstatic || exit -1
-		python manage.py compress --force || exit -1
+		#python manage.py compress --force || exit -1
 		cat >> $SRC_PATH/basxconnect_demo/settings/production.py  <<FINISH
 ALLOWED_HOSTS = ["$URL"]
 #DEBUG = True
