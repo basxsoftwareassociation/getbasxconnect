@@ -267,8 +267,10 @@ install_debian()
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
-	if [[ "$DBMSType" == "mysql" ]]; then
+	if [[ "$DBMSType" == "mysql" && "$VER" == "10" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadbclient-dev"
+	elif [[ "$DBMSType" == "mysql" && "$VER" == "11" ]]; then
+		packagesToInstall=$packagesToInstall" mariadb-server libmariadb-dev"
 	elif [[ "$DBMSType" == "sqlite" ]]; then
 		packagesToInstall=$packagesToInstall" sqlite"
 	fi
