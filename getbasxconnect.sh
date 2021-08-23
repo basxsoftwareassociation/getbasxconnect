@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 33/34 and CentOS 8 Stream and Debian 10 (Buster) and Ubuntu Focal (20.04).
+# This should work on Fedora 33/34 and CentOS 8 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -376,7 +376,7 @@ install()
 			fi
 		fi
 		if [[ "$OS_FAMILY" == "Debian" ]]; then
-			if [[ "$VER" != "10" && "$VER" != "20.04" ]]; then
+			if [[ "$VER" != "11" && "$VER" != "10" && "$VER" != "20.04" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
