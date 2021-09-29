@@ -33,8 +33,8 @@ This should work on Fedora 33/34 and CentOS 8 Stream and Debian 10 (Buster) and 
 
 Please open an issue if you notice any bugs.
 
-Alternative
-===========
+Alternative method of installing
+================================
 
 Instead of using this script, you can also get the basxConnect Demo Repository with git, and use the Makefile:
 
