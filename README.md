@@ -1,7 +1,7 @@
 basxConnect Installer Script
 ============================
 
-Homepage: https://www.basx.org/basxconnect
+Homepage: https://connect.basx.org/
 
 Issues:   https://github.com/basxsoftwareassociation/basxconnect/issues
 

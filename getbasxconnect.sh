@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #
-#                  BasxConnect Installer Script
+#                  basxConnect Installer Script
 #
-#   Homepage: https://www.basx.org/basxconnect
+#   Homepage: https://connect.basx.org/
 #   Issues:   https://github.com/basxsoftwareassociation/basxconnect/issues
 #   Requires: bash, curl, sudo (if not root), tar
 #
-# This script installs BasxConnect on your Linux system.
+# This script installs basxConnect on your Linux system.
 # You have various options, to install a development environment,
 # or to install a production environment.
 #
