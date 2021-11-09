@@ -166,8 +166,6 @@ setup_basxconnect()
 
 	if [[ "$install_type" == "prod" ]]; then
 		pip install gunicorn || exit -1
-		python manage.py collectstatic || exit -1
-		#python manage.py compress --force || exit -1
 		cat >> $SRC_PATH/basxconnect_demo/settings/production.py  <<FINISH
 ALLOWED_HOSTS = ["$URL"]
 #DEBUG = True
@@ -219,6 +217,12 @@ FINISH
 
 	python manage.py migrate || exit -1
 	python manage.py createsuperuser --noinput || exit -1
+}
+
+setup_static()
+{
+	python manage.py collectstatic || exit -1
+	python manage.py compress --force || exit -1
 }
 
 install_fedora()
@@ -437,6 +441,8 @@ install()
 		setup_basxconnect
 
 		setup_dbms
+
+		setup_static
 
 		setup_service
 
