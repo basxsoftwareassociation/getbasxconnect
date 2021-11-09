@@ -223,7 +223,7 @@ FINISH
 
 install_fedora()
 {
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-devel gcc git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel libffi-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -247,7 +247,7 @@ install_centos()
 	else
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
 	fi
-	packagesToInstall="perl-Image-ExifTool graphviz-devel python3-devel gcc git"
+	packagesToInstall="perl-Image-ExifTool graphviz-devel libffi-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -261,7 +261,7 @@ install_centos()
 
 install_debian()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-venv python3-dev virtualenv gcc git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev libffi-dev python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
@@ -277,7 +277,7 @@ install_debian()
 
 install_ubuntu()
 {
-	packagesToInstall="libimage-exiftool-perl libgraphviz-dev python3-venv python3-dev virtualenv gcc git pkg-config"
+	packagesToInstall="libimage-exiftool-perl libgraphviz-dev libffi-dev python3-venv python3-dev virtualenv gcc git pkg-config"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
