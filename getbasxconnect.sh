@@ -222,7 +222,6 @@ FINISH
 setup_static()
 {
 	python manage.py collectstatic || exit -1
-	python manage.py compress --force || exit -1
 }
 
 install_fedora()
