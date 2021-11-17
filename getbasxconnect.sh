@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 33/34 and CentOS 8 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04).
+# This should work on Fedora 34/35 and CentOS 8 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
