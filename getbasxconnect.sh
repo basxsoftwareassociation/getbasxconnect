@@ -359,7 +359,7 @@ install()
 		if [[ "$OS" == "CentOS Linux" ]]; then OS="CentOS"; OS_FAMILY="Fedora"; fi
 		if [[ "$OS" == "CentOS Stream" ]]; then OS="CentOS"; OS_FAMILY="Fedora"; fi
 		if [[ "$OS" == "Red Hat Enterprise Linux Server" ]]; then OS="CentOS"; OS_FAMILY="Fedora"; fi
-		if [[ "$OS" == "Fedora" ]]; then OS="Fedora"; OS_FAMILY="Fedora"; fi
+		if [[ "$OS" == "Fedora" || "$OS" == "Fedora Linux" ]]; then OS="Fedora"; OS_FAMILY="Fedora"; fi
 		if [[ "$OS" == "Debian GNU/Linux" ]]; then OS="Debian"; OS_FAMILY="Debian"; fi
 		if [[ "$OS" == "Ubuntu" ]]; then OS="Ubuntu"; OS_FAMILY="Debian"; fi
 
