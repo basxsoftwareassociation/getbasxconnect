@@ -142,6 +142,8 @@ setup_basxconnect()
 
 	# to avoid error message: error: invalid command 'bdist_wheel'
 	pip install wheel || exit -1
+	# to avoid issues with Django 4
+	pip install --upgrade pip || exit -1
 
 	pip install -r requirements.txt || exit -1
 
