@@ -147,7 +147,7 @@ setup_basxconnect()
 
 	pip install -r requirements.txt || exit -1
 	# see https://github.com/django-haystack/django-haystack/issues/1826
-	sed -i "s/ungettext/ngettext/g" .venv/lib64/python3.10/site-packages/haystack/admin.py
+	sed -i "s/ungettext/ngettext/g" `find .venv/lib -wholename \*site-packages/haystack/admin.py`
 
 	if [[ "$DBMSType" == "mysql" ]]; then
 		pip install mysqlclient || exit -1
