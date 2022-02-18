@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 34/35 and CentOS 8 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04).
+# This should work on Fedora 34/35 and CentOS 8 Stream and CentOS 9 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -201,7 +201,6 @@ DATABASES = {
 }
 FINISH
 
-		# TODO: Fedora kommt auch mit /etc/my.cnf zurecht??? oder braucht es /etc/mysql.cnf?
 		cat >> $USER_HOME/my.cnf <<FINISH
 [client]
 database = basxconnect
@@ -244,8 +243,12 @@ install_fedora()
 
 install_centos()
 {
-	yum -y install epel-release || exit -1
-	if [[ "$VER" == "8" ]]; then
+	if [[ "$VER" == "9" ]]; then
+		yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm || exit -1
+	else
+		yum -y install epel-release || exit -1
+	fi
+	if [[ "$VER" == "8" || "$VER" == "9" ]]; then
 		yum -y install python39-devel || exit -1
 		alternatives --set python3 /usr/bin/python3.9 || exit -1
 	fi
@@ -377,7 +380,7 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "34" && "$VER" != "35" && "$VER" != "8" ]]; then
+			if [[ "$VER" != "34" && "$VER" != "35" && "$VER" != "8" && "$VER" != "9" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
