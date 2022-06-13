@@ -256,8 +256,9 @@ install_centos()
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo || exit -1
 	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
-	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
-		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
+	else
+		# see https://docs.fedoraproject.org/en-US/epel/
+		dnf config-manager --set-enabled crb || exit -1
 	fi
 	packagesToInstall="perl-Image-ExifTool graphviz-devel libffi-devel libjpeg-devel python3-devel gcc git"
 	if [[ "$install_type" == "prod" ]]; then
