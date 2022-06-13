@@ -250,10 +250,12 @@ install_centos()
 	fi
 	if [[ "$VER" == "8" ]]; then
 		yum -y install python39-devel || exit -1
-		alternatives --set python3 /usr/bin/python3.11 || exit -1
+		alternatives --set python3 /usr/bin/python3.9 || exit -1
 	fi
 	if [ -f /etc/yum.repos.d/CentOS-Linux-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo || exit -1
+	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
+		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
 	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
 	fi
