@@ -263,6 +263,7 @@ install_centos()
 	packagesToInstall="graphviz-devel libffi-devel libjpeg-devel python3-devel gcc git"
 	if [[ "$VER" != "9" ]]; then
 		packagesToInstall=$packagesToInstall" perl-Image-ExifTool"
+	fi
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
