@@ -254,7 +254,7 @@ install_centos()
 	fi
 	if [ -f /etc/yum.repos.d/CentOS-Linux-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo || exit -1
-	else
+	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo || exit -1
 	fi
 	packagesToInstall="perl-Image-ExifTool graphviz-devel libffi-devel libjpeg-devel python3-devel gcc git"
