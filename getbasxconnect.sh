@@ -248,8 +248,8 @@ install_centos()
 	else
 		yum -y install epel-release || exit -1
 	fi
-	if [[ "$VER" == "8" || "$VER" == "9" ]]; then
-		yum -y install python3.11-devel || exit -1
+	if [[ "$VER" == "8" ]]; then
+		yum -y install python39-devel || exit -1
 		alternatives --set python3 /usr/bin/python3.11 || exit -1
 	fi
 	if [ -f /etc/yum.repos.d/CentOS-Linux-PowerTools.repo ]; then
