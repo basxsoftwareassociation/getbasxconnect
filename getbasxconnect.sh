@@ -260,7 +260,9 @@ install_centos()
 		# see https://docs.fedoraproject.org/en-US/epel/
 		dnf config-manager --set-enabled crb || exit -1
 	fi
-	packagesToInstall="perl-Image-ExifTool graphviz-devel libffi-devel libjpeg-devel python3-devel gcc git"
+	packagesToInstall="graphviz-devel libffi-devel libjpeg-devel python3-devel gcc git"
+	if [[ "$VER" != "9" ]]; then
+		packagesToInstall=$packagesToInstall" perl-Image-ExifTool"
 	if [[ "$install_type" == "prod" ]]; then
 		packagesToInstall=$packagesToInstall" nginx"
 	fi
