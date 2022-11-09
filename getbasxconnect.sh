@@ -130,7 +130,7 @@ setup_basxconnect()
 
 	if [ ! -d $SRC_PATH ]
 	then
-		git clone --depth 50 $GIT_URL -b $BRANCH $SRC_PATH
+		git clone --depth 50 $GIT_URL -b $BRANCH $SRC_PATH || exit -1
 		#if you want a full repository clone:
 		#git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
 		#git fetch --unshallow
