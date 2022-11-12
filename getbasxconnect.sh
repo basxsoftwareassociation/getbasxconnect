@@ -75,6 +75,8 @@ FINISH
 
 	# nginx is part of group django, and has read permission on /home/django
 	usermod -G nginx,django nginx
+	# on Ubuntu, we have group www-data
+	usermod -G www-data,django www-data
 	chmod g+rx $USER_HOME
 
 	systemctl start nginx
