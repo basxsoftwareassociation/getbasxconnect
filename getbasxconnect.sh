@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 35/36 and CentOS 8 Stream and CentOS 9 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04) and Ubuntu Jammy (22.04).
+# This should work on Fedora 36/37 and CentOS 8 Stream and CentOS 9 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04) and Ubuntu Jammy (22.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -390,7 +390,7 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "35" && "$VER" != "36" && "$VER" != "8" && "$VER" != "9" ]]; then
+			if [[ "$VER" != "36" && "$VER" != "37" && "$VER" != "8" && "$VER" != "9" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
