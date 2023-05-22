@@ -390,7 +390,7 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "36" && "$VER" != "37" && "$VER" != "8" && "$VER" != "9" ]]; then
+			if [[ "$VER" != "37" && "$VER" != "38" && "$VER" != "9" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
