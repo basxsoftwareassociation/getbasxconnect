@@ -285,7 +285,7 @@ install_debian()
 	fi
 	if [[ "$DBMSType" == "mysql" && "$VER" == "10" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadbclient-dev"
-	elif [[ "$DBMSType" == "mysql" && "$VER" == "11" ]]; then
+	elif [[ "$DBMSType" == "mysql" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadb-dev"
 	elif [[ "$DBMSType" == "sqlite" ]]; then
 		packagesToInstall=$packagesToInstall" sqlite"
@@ -301,7 +301,7 @@ install_ubuntu()
 	fi
 	if [[ "$DBMSType" == "mysql" && "$VER" == "20.04" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadbclient-dev"
-	elif [[ "$DBMSType" == "mysql" && "$VER" == "22.04" ]]; then
+	elif [[ "$DBMSType" == "mysql" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadb-dev"
 	elif [[ "$DBMSType" == "sqlite" ]]; then
 		packagesToInstall=$packagesToInstall" sqlite"
