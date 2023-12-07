@@ -390,13 +390,13 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "37" && "$VER" != "38" && "$VER" != "9" ]]; then
+			if [[ "$VER" != "39" && "$VER" != "9" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
 		fi
 		if [[ "$OS_FAMILY" == "Debian" ]]; then
-			if [[ "$VER" != "11" && "$VER" != "10" && "$VER" != "20.04" && "$VER" != "22.04" ]]; then
+			if [[ "$VER" != "12" && "$VER" != "22.04" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
