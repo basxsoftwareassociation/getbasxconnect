@@ -284,7 +284,7 @@ install_debian()
 	elif [[ "$DBMSType" == "mysql" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadb-dev"
 	elif [[ "$DBMSType" == "sqlite" ]]; then
-		packagesToInstall=$packagesToInstall" sqlite"
+		packagesToInstall=$packagesToInstall" sqlite3"
 	fi
 	apt-get -y install $packagesToInstall || exit -1
 }
@@ -300,7 +300,7 @@ install_ubuntu()
 	elif [[ "$DBMSType" == "mysql" ]]; then
 		packagesToInstall=$packagesToInstall" mariadb-server libmariadb-dev"
 	elif [[ "$DBMSType" == "sqlite" ]]; then
-		packagesToInstall=$packagesToInstall" sqlite"
+		packagesToInstall=$packagesToInstall" sqlite3"
 	fi
 	apt-get -y install $packagesToInstall || exit -1
 }
