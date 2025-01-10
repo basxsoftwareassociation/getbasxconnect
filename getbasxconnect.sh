@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 36/37 and CentOS 8 Stream and CentOS 9 Stream and Debian 10 (Buster) and Debian 11 (Bullseye) and Ubuntu Focal (20.04) and Ubuntu Jammy (22.04).
+# This should work on Fedora 41, CentOS 9 Stream, Debian 12 (Bookworm), Ubuntu Jammy (22.04) and Ubuntu Jammy (24.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -250,10 +250,6 @@ install_centos()
 	else
 		yum -y install epel-release || exit -1
 	fi
-	if [[ "$VER" == "8" ]]; then
-		yum -y install python39-devel || exit -1
-		alternatives --set python3 /usr/bin/python3.9 || exit -1
-	fi
 	if [ -f /etc/yum.repos.d/CentOS-Linux-PowerTools.repo ]; then
 		sed -i "s/^enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo || exit -1
 	elif [ -f /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]; then
@@ -390,13 +386,13 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "40" && "$VER" != "9" ]]; then
+			if [[ "$VER" != "41" && "$VER" != "9" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
 		fi
 		if [[ "$OS_FAMILY" == "Debian" ]]; then
-			if [[ "$VER" != "12" && "$VER" != "22.04" ]]; then
+			if [[ "$VER" != "12" && "$VER" != "24.04" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
