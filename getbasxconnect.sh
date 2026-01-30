@@ -144,6 +144,8 @@ setup_basxconnect()
 
 	# to avoid error message: error: invalid command 'bdist_wheel'
 	pip install wheel || exit -1
+	# to avoid error message: ModuleNotFoundError: No module named 'pkg_resources'
+	pip install setuptools || exit -1
 	# to avoid issues with Django 4
 	pip install --upgrade pip || exit -1
 
