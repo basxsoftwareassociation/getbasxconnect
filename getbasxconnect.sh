@@ -29,7 +29,7 @@
 #            default is: --behindsslproxy=true
 #     --adminemail=<email address of admin>
 #
-# This should work on Fedora 41, CentOS 9 Stream, Debian 12 (Bookworm), Ubuntu Jammy (22.04) and Ubuntu Jammy (24.04).
+# This should work on Fedora 43, CentOS 10 Stream, Debian 12 (Bookworm), and Ubuntu Jammy (24.04).
 # Please open an issue if you notice any bugs.
 
 [[ $- = *i* ]] && echo "Don't source this script!" && return 10
@@ -388,7 +388,7 @@ install()
 		fi
 
 		if [[ "$OS_FAMILY" == "Fedora" ]]; then
-			if [[ "$VER" != "42" && "$VER" != "9" ]]; then
+			if [[ "$VER" != "43" && "$VER" != "10" ]]; then
 				echo "Aborted, Your distro version is not supported: " $OS $VER
 				return 6
 			fi
